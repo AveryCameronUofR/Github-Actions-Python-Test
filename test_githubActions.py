@@ -7,6 +7,9 @@ class TestApp(unittest.TestCase):
     def testEven(self):
         self.assertEqual(githubActions.makeEven(6), 6)
 
+    def testEven4(self):
+        self.assertEqual(githubActions.makeEven(4), 4)   
+
 def suite():
     suite = unittest.TestSuite()
     suite.addTests(
