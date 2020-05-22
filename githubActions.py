@@ -4,5 +4,5 @@ def addOne(x):
 def makeEven(num):
     if(num % 2 == 0):
         return num
-    else: 
+    else:
         return num + 1
