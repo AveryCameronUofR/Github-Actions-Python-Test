@@ -3,7 +3,7 @@
 
 name: Python Commit Linter
 
-on: [push]
+on: push
 
 jobs:
   Lint:
