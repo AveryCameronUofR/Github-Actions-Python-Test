@@ -11,7 +11,6 @@ jobs:
   buildAndTest:
 
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.8
@@ -52,3 +51,8 @@ jobs:
         env_vars: PYTHON
         # Specify whether or not CI build should fail if Codecov runs into an error during upload
         fail_ci_if_error: true # optional, default = false
+    - name: Coveralls Upload
+      env:
+        COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+      run : |
+        coveralls
