@@ -6,3 +6,6 @@ class TestClass:
 
     def testEven(self):
         assert githubActions.makeEven(6) == 6
+
+    def testMakeEven(self):
+        assert githubActions.makeEven(5) == 6
