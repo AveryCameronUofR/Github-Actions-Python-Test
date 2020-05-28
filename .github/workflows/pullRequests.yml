@@ -34,9 +34,10 @@ jobs:
     - name: Check test coverage
       run: |
         pip install coverage
-        coverage run -m unittest discover
+        coverage run -m pytest
         coverage report
         coverage xml
+        echo ::set-env name=COVERAGE::$(coverage report)
     - name: Codecov Upload
       uses: codecov/codecov-action@v1.0.7
       with:
@@ -51,8 +52,10 @@ jobs:
         env_vars: PYTHON
         # Specify whether or not CI build should fail if Codecov runs into an error during upload
         fail_ci_if_error: true # optional, default = false
-    - name: Coveralls Upload
-      env:
-        COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
-      run : |
-        coveralls debug
+    - name: PR Comment
+      uses: github-actions-up-and-running/pr-comment@v1.0.1
+      with:
+        # GITHUB_TOKEN secret
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        # Message to comment
+        message: $COVERAGE
