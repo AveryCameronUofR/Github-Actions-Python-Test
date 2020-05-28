@@ -58,4 +58,4 @@ jobs:
         # GITHUB_TOKEN secret
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         # Message to comment
-        message: "${{ COVERAGE }}"
+        message: ${{ COVERAGE }}
