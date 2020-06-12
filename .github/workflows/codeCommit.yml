@@ -41,12 +41,12 @@ jobs:
     - name: Upload pytest test coverage results HTML
       uses: actions/upload-artifact@v1
       with:
-        name: pytest-coverage-results
+        name: pytest-coverage-results-html
         path: ./htmlcov
       if: ${{ always() }}
     - name: Upload pytest test coverage results XML
       uses: actions/upload-artifact@v1
       with:
-        name: pytest-coverage-results
-        path: /coverage.xml
+        name: pytest-coverage-results-xml
+        path: ./coverage.xml
       if: ${{ always() }}
