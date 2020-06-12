@@ -42,9 +42,11 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: pytest-coverage-results
-        path: /htmlcov
+        path: ./htmlcov
+        if: ${{ always() }}
     - name: Upload pytest test coverage results XML
       uses: actions/upload-artifact@v1
       with:
         name: pytest-coverage-results
         path: /coverage.xml
+        if: ${{ always() }}
