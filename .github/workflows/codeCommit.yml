@@ -38,13 +38,6 @@ jobs:
         coverage xml
         coverage html
         echo ::set-env name=COVERAGE::$(coverage report)
-    - name: PR Comment
-      uses: github-actions-up-and-running/pr-comment@v1.0.1
-      with:
-        # GITHUB_TOKEN secret
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        # Message to comment
-        message: '${{ env.COVERAGE }}'
     - name: Upload pytest test coverage results HTML
       uses: actions/upload-artifact@v1
       with:
