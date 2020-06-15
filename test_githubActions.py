@@ -11,7 +11,7 @@ class TestClass:
         assert githubActions.makeEven(5) == 6
 
     def testMakeOddEven(self):
-        assert githubActions.makeEven(6) == 7
+        assert githubActions.makeOdd(6) == 7
 
     def testMakeOdd(self):
-        assert githubActions.makeEven(5) == 5
+        assert githubActions.makeOdd(5) == 5
