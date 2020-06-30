@@ -6,7 +6,7 @@ def makeEven(num):
         return num
     else:
         return num + 1
-    
+
 def makeOdd(num):
     if(num % 2 == 1):
         return num
