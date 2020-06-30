@@ -67,4 +67,4 @@ jobs:
         echo ::set-env name=CHANGED_FILES::$($FILES)
     - name: Check Test Coverage for changed sections
       run: | 
-        diff-cover coverage.xml --fail-under=80
+        diff-cover coverage.xml --fail-under=80 --compare-branch=coverage-branch
