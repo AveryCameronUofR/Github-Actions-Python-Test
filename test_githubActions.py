@@ -9,6 +9,3 @@ class TestClass:
 
     def testOddEven(self):
         assert githubActions.makeEven(5) == 6
-
-    def testMakeOddOdd(self):
-        assert githubActions.makeOdd(5) == 5
