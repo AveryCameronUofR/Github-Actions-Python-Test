@@ -36,8 +36,10 @@ jobs:
         coverage run -m pytest
         coverage report
         coverage xml
+        coverage xml -o coverage1.xml
         coverage html
         echo ::set-env name=COVERAGE::$(coverage report)
+        cat coverage.xml
     - name: Upload pytest test coverage results HTML
       uses: actions/upload-artifact@v1
       with:
