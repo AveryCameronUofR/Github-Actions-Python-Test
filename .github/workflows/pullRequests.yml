@@ -59,12 +59,11 @@ jobs:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         # Message to comment
         message: '${{ env.COVERAGE }}'
-    - name: list files
-      run: |
-        URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ github.event.pull_request.number }}/files"
-        FILES=$(curl -s -X GET -G $URL | jq -r '.[] | .filename')
-        echo $FILES
-        echo ::set-env name=CHANGED_FILES::$($FILES)
-    - name: Check Test Coverage for changed sections
-      run: | 
-        diff-cover coverage.xml --fail-under=80
+    - name: Changed Files
+      uses: lots0logs/gh-action-get-changed-files@2.1.4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Check test coverage
+      uses: AveryCameronUofR/test-coverage-check-gh-action@1.0.0
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
