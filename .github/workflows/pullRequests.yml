@@ -37,6 +37,7 @@ jobs:
         coverage run -m pytest
         coverage report
         coverage xml
+        coverage xml -o coverage1.xml
         echo ::set-env name=COVERAGE::$(coverage report)
     - name: Codecov Upload
       uses: codecov/codecov-action@v1.0.7
