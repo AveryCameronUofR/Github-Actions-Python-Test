@@ -42,12 +42,6 @@ jobs:
         echo ::set-env name=COVERAGE::$(coverage report)
         realpath coverage1.xml
         realpath coverage.xml
-    - name: Check branch name
-      uses: mdecoleman/pr-branch-name@1.0.0
-      id: vars
-      with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-    - run: echo ${{ steps.vars.outputs.branch }}
     - name: Codecov Upload
       uses: codecov/codecov-action@v1.0.7
       with:
@@ -77,3 +71,10 @@ jobs:
       uses: AveryCameronUofR/test-coverage-check-gh-action@1.0.9
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Get branch name
+      uses: mdecoleman/pr-branch-name@1.0.0
+      id: vars
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: print branch name
+      run: echo ${{ steps.vars.outputs.branch }}
