@@ -78,3 +78,8 @@ jobs:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
     - name: print branch name
       run: echo ${{ steps.vars.outputs.branch }}
+    - name: print base branch
+      run: |
+        echo ${{ github.event.pull_request.base.sha }}
+        echo ${{ github.base_ref }}
+        echo ${{ github.event.pull_request.base }}
