@@ -39,6 +39,8 @@ jobs:
         coverage xml
         coverage xml -o coverage1.xml
         echo ::set-env name=COVERAGE::$(coverage report)
+        realpath coverage1.xml
+        realpath coverage.xml
     - name: Codecov Upload
       uses: codecov/codecov-action@v1.0.7
       with:
