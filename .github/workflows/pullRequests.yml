@@ -28,7 +28,6 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-        echo "Pull request's base branch is: ${BASE_BRANCH}"
     - name: Test with pytest
       run: |
         pytest
@@ -38,10 +37,8 @@ jobs:
         coverage run -m pytest
         coverage report
         coverage xml
-        coverage xml -o coverage1.xml
+        coverage xml -o master-coverage.xml
         echo ::set-env name=COVERAGE::$(coverage report)
-        realpath coverage1.xml
-        realpath coverage.xml
     - name: Codecov Upload
       uses: codecov/codecov-action@v1.0.7
       with:
@@ -71,15 +68,4 @@ jobs:
       uses: AveryCameronUofR/test-coverage-check-gh-action@1.0.9
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-    - name: Get branch name
-      uses: mdecoleman/pr-branch-name@1.0.0
-      id: vars
-      with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-    - name: print branch name
-      run: echo ${{ steps.vars.outputs.branch }}
-    - name: print base branch
-      run: |
-        echo ${{ github.event.pull_request.base.sha }}
-        echo ${{ github.base_ref }}
-        echo ${{ github.event.pull_request.base }}
+        branch: ${{ github.base_ref }}
