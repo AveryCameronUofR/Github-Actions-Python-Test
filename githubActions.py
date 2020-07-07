@@ -6,3 +6,6 @@ def makeEven(num):
         return num
     else:
         return num + 1
+    
+def subOne(x):
+    return x - 1
