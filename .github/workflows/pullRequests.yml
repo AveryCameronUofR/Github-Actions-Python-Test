@@ -65,7 +65,7 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
     - name: Check test coverage
-      uses: AveryCameronUofR/test-coverage-check-gh-action@1.0.12
+      uses: AveryCameronUofR/test-coverage-check-gh-action@1.0.13
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         branch: ${{ github.base_ref }}
