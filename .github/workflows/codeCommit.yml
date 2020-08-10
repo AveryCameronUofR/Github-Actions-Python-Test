@@ -40,6 +40,14 @@ jobs:
         coverage html
         echo ::set-env name=COVERAGE::$(coverage report)
         cat coverage.xml
+    - name: Test coverage save output
+      run: |
+        branch="${{github.ref}}"
+        coverage run -m pytest
+        coverage report
+        coverage xml -o "${branch/refs\/heads\//}-coverage.xml"
+        ls
+        cat "${branch/refs\/heads\//}-coverage.xml"
     - name: Upload pytest test coverage results HTML
       uses: actions/upload-artifact@v1
       with:
