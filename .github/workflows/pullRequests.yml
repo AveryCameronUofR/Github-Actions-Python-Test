@@ -37,7 +37,7 @@ jobs:
         coverage run -m pytest
         coverage report
         coverage xml
-        coverage xml -o coverage1.xml
+        coverage xml -o master-coverage.xml
         echo ::set-env name=COVERAGE::$(coverage report)
     - name: Codecov Upload
       uses: codecov/codecov-action@v1.0.7
@@ -65,6 +65,7 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
     - name: Check test coverage
-      uses: AveryCameronUofR/test-coverage-check-gh-action@1.0.0
+      uses: AveryCameronUofR/test-coverage-check-gh-action@1.0.13
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.base_ref }}
